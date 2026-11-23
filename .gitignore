@@ -1,0 +1,30 @@
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Dataset files
+*.zip
+dataset/
+Dataset/
+PlantVillage/
+plantvillage/
+
+# Trained model
+*.h5
+*.hdf5
+*.keras
+
+# Temporary files
+static/uploads/*
+*.log
+.env
+
+# IDE
+.vscode/
+.idea/

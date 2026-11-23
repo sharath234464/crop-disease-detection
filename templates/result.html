@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Result</title>
+</head>
+
+<body>
+
+<h2>Disease Detection Result</h2>
+
+<!-- Uploaded Image -->
+<img src="{{ image_path }}" width="250">
+
+<br><br>
+
+<!-- IMPORTANT VALUES -->
+<p><b>Disease:</b> {{ disease }}</p>
+<p><b>Confidence:</b> {{ confidence }}%</p>
+
+<p><b>Cause:</b> {{ cause }}</p>
+<p><b>Solution:</b> {{ solution }}</p>
+
+<h3>Audio Output</h3>
+
+{% for lang, file in audio_files.items() %}
+    <p>{{ lang }}</p>
+    <audio controls>
+        <source src="{{ url_for('static', filename='audio/' + file) }}">
+    </audio>
+{% endfor %}
+
+<br><br>
+
+<a href="/upload">
+    <button>Try Another Image</button>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Upload</title>
+
+<style>
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI';
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("{{ url_for('static', filename='images/farm-bg.jpg') }}") no-repeat center/cover;
+}
+
+.card {
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.6);
+    padding:40px;
+    border-radius:20px;
+    width:320px;
+    text-align:center;
+    color:white;
+}
+
+input {
+    width:100%;
+    margin:15px 0;
+}
+
+button {
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#4CAF50;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover {
+    transform:scale(1.05);
+}
+
+#preview {
+    width:180px;
+    margin-top:10px;
+    display:none;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Upload Leaf Image</h2>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" onchange="preview(event)" required>
+        <button type="submit">Detect Disease</button>
+    </form>
+
+    <img id="preview">
+</div>
+
+<script>
+function preview(event){
+    let img = document.getElementById("preview");
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = "block";
+}
+</script>
+
+</body>
+</html>
